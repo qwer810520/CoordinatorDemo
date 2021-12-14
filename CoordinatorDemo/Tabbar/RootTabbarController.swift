@@ -1,5 +1,5 @@
 //
-//  TabbarController.swift
+//  RootTabbarController.swift
 //  CoordinatorDemo
 //
 //  Created by Min on 2021/12/14.
@@ -7,13 +7,20 @@
 
 import UIKit
 
-class TabbarController: UITabBarController {
+protocol RootTabbarControllerDelegate: AnyObject {
+    func tabbarDidSelectItem(with index: Int)
+}
+
+class RootTabbarController: UITabBarController {
+    
+    weak var customDelegate: RootTabbarControllerDelegate?
     
     // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUserInterface()
+        delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,12 +33,16 @@ class TabbarController: UITabBarController {
         if #available(iOS 15, *) {
             let appearance = UITabBarAppearance()
             appearance.configureWithDefaultBackground()
+            tabBar.standardAppearance = appearance
             tabBar.scrollEdgeAppearance = appearance
         }
     }
-    
-    private func setupChildControllers() {
-        
-        
+}
+
+    // MARK: - UITabBarControllerDelegate
+
+extension RootTabbarController: UITabBarControllerDelegate {
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        customDelegate?.tabbarDidSelectItem(with: item.tag)
     }
 }

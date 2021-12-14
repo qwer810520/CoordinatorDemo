@@ -10,6 +10,7 @@ import UIKit
 class MainCoordinator: Coordinator<UINavigationController> {
     
     override func start() {
+        guard !isStart else { return }
         let viewController = MainViewController()
         viewController.delegate = self
         push(viewController: viewController, animated: false)

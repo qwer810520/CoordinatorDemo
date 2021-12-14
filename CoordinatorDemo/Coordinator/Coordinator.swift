@@ -18,6 +18,10 @@ protocol CoordinatorType: AnyObject {
     func stopChild(_ coordinator: CoordinatorType)
     
     func stopChildren()
+    
+    func active()
+    func deactivate()
+    
 }
 
 class Coordinator<T: UIViewController>: CoordinatorType {
@@ -28,6 +32,7 @@ class Coordinator<T: UIViewController>: CoordinatorType {
     let rootViewController: T
     
     private(set) var isStart = false
+    private(set) var isActive = false
     
     init(viewController: T) {
         self.rootViewController = viewController
@@ -36,10 +41,12 @@ class Coordinator<T: UIViewController>: CoordinatorType {
     
     func start() {
         isStart = true
+        isActive = true
     }
     
     func stop() {
         isStart = false
+        isActive = false
         stopChildren()
     }
     
@@ -58,13 +65,25 @@ class Coordinator<T: UIViewController>: CoordinatorType {
         }
     }
     
-    // MARK: - Private Methods
-    
     final func stopChildren() {
         childCoordinators.forEach {
             $0.stop()
         }
         childCoordinators.removeAll()
+    }
+}
+
+    // MARK: - Only Tabbar Use
+
+extension Coordinator {
+    func active() {
+        isActive = true
+        childCoordinators.forEach { $0.active() }
+    }
+    
+    func deactivate() {
+        isActive = false
+        childCoordinators.forEach { $0.deactivate() }
     }
 }
 
@@ -94,11 +113,8 @@ extension Coordinator where T: UINavigationController {
     
     func push(viewController: UIViewController, animated: Bool = true) {
         viewController.coordinator = self
-        print("controller: \(viewController), coordinator: \(viewController.coordinator)")
         guard !rootViewController.viewControllers.contains(viewController) else { return }
         rootViewController.pushViewController(viewController, animated: animated)
-        
-        print("------------->")
     }
     
     func pop(animated: Bool = true) {
@@ -115,7 +131,6 @@ extension Coordinator where T: UINavigationController {
     // MARK: - UIViewController Extension
 
 extension UIViewController {
-
     private struct CoordinatorAssociatedKeys {
         static var ownerKey: UInt = 0
     }
