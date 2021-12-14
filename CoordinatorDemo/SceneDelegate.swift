@@ -11,13 +11,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     
-    var rootCoordinator: RootCoordinator?
+    var rootCoordinator: MainCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        rootCoordinator = RootCoordinator(viewController: BaseNavigationController())
+        rootCoordinator = MainCoordinator(viewController: BaseNavigationController())
         rootCoordinator?.start()
         
         window = UIWindow(windowScene: windowScene)

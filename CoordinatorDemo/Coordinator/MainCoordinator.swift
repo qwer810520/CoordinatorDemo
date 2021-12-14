@@ -7,10 +7,10 @@
 
 import UIKit
 
-class RootCoordinator: Coordinator<UINavigationController> {
+class MainCoordinator: Coordinator<UINavigationController> {
     
     override func start() {
-        let viewController = ViewController()
+        let viewController = MainViewController()
         viewController.delegate = self
         push(viewController: viewController, animated: false)
         super.start()
@@ -19,13 +19,13 @@ class RootCoordinator: Coordinator<UINavigationController> {
 
     // MARK: - ViewControllerDelegate
 
-extension RootCoordinator: ViewControllerDelegate {
-    func rootViewControllerDidPushBuy(_ viewController: ViewController, to productType: Int) {
+extension MainCoordinator: MainViewControllerDelegate {
+    func rootViewControllerDidPushBuy(_ viewController: MainViewController, to productType: Int) {
         let buyCoordinator = BuyCoordinator(rootViewController: rootViewController, productType: productType)
         startChild(buyCoordinator)
     }
     
-    func rootViewControllerDidPushCreateAccount(_ viewController: ViewController) {
+    func rootViewControllerDidPushCreateAccount(_ viewController: MainViewController) {
         print(#function)
     }
 }

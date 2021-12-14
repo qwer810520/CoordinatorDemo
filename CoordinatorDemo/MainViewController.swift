@@ -10,12 +10,12 @@ import RxSwift
 import RxCocoa
 import SnapKit
 
-protocol ViewControllerDelegate: AnyObject {
-    func rootViewControllerDidPushBuy(_ viewController: ViewController, to productType: Int)
-    func rootViewControllerDidPushCreateAccount(_ viewController: ViewController)
+protocol MainViewControllerDelegate: AnyObject {
+    func rootViewControllerDidPushBuy(_ viewController: MainViewController, to productType: Int)
+    func rootViewControllerDidPushCreateAccount(_ viewController: MainViewController)
 }
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     private lazy var buyButton: UIButton = {
         let button = UIButton()
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }()
     
     private let disposeBag = DisposeBag()
-    weak var delegate: ViewControllerDelegate?
+    weak var delegate: MainViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
