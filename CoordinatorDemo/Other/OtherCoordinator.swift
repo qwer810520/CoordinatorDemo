@@ -9,12 +9,12 @@ import UIKit
 
 class OtherCoordinator: Coordinator<UINavigationController> {
     
-    private var viewController: UIViewController? = nil
+    private var viewController: OtherViewController?
     
     override func start() {
         guard !isStart else { return }
-        let controller = OtherViewController()
-        viewController = controller
+        viewController = OtherViewController()
+        guard let controller = viewController else { return }
         controller.delegate = self
         push(viewController: controller, animated: false)
         super.start()

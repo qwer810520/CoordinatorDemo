@@ -40,9 +40,18 @@ class BuyViewController: UIViewController {
     }()
     
     weak var delegate: BuyViewControllerDelegate?
-    var selectProductIndex = 0
+    var selectProductIndex: Int
     
     // MARK: - UIViewController
+    
+    init(selectType: Int) {
+        self.selectProductIndex = selectType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

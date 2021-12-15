@@ -19,7 +19,7 @@ class BuyCoordinator: Coordinator<UINavigationController> {
     }
     
     override func start() {
-        let viewController = BuyViewController()
+        let viewController = BuyViewController(selectType: selectProductIndex)
         viewController.delegate = self
         push(viewController: viewController, animated: true)
         super.start()
