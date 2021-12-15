@@ -87,7 +87,6 @@ class MainViewController: UIViewController {
     private func bindingView() {
         buyButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] _ in
-                print("buyButton did Pressend")
                 guard let self = self else { return }
                 self.delegate?.rootViewControllerDidPushBuy(self, to: self.productSegmented.selectedSegmentIndex)
             })
@@ -95,7 +94,6 @@ class MainViewController: UIViewController {
         
         creatAccountButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] _ in
-                print("creatAccountButton did Pressend")
                 guard let self = self else { return }
                 self.delegate?.rootViewControllerDidPushCreateAccount(self)
             })

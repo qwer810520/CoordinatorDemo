@@ -55,13 +55,12 @@ class Coordinator<T: UIViewController>: CoordinatorType {
         coordinator.parent = self
         childCoordinators.append(coordinator)
         coordinator.start()
-        print("\(#function), coodinator is \(self),childCoordinators: \(childCoordinators)")
     }
     
     func stopChild(_ coordinator: CoordinatorType) {
         coordinator.stop()
         if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
-            coordinator.childCoordinators.remove(at: index)
+            childCoordinators.remove(at: index)
         }
     }
     
@@ -96,9 +95,16 @@ extension Coordinator where T: UIViewController {
     }
     
     func dismiss(animated: Bool = true, completion: (() -> Void)? = nil) {
-        // TODO
+        var target: CoordinatorType?
+        if let navigationController = rootViewController.presentedViewController as? UINavigationController {
+            target = navigationController.viewControllers.first?.coordinator
+        } else {
+            target = self
+        }
         rootViewController.dismiss(animated: animated) {
-            self.parent?.stopChild(self)
+            if let target = target {
+                self.parent?.stopChild(target)
+            }
             completion?()
         }
     }

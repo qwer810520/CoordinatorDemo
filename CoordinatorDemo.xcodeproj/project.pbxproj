@@ -14,6 +14,8 @@
 		392CC22F2768A1E300A7696D /* RootTabbarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392CC22E2768A1E300A7696D /* RootTabbarCoordinator.swift */; };
 		392CC2322768A37000A7696D /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392CC2312768A37000A7696D /* OtherViewController.swift */; };
 		392CC2342768A38400A7696D /* OtherCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392CC2332768A38400A7696D /* OtherCoordinator.swift */; };
+		392CC2372769930600A7696D /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392CC2362769930600A7696D /* OrderDetailViewController.swift */; };
+		392CC239276994E700A7696D /* OrderDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392CC238276994E700A7696D /* OrderDetailCoordinator.swift */; };
 		395D84092762604100DC98A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D84082762604100DC98A4 /* AppDelegate.swift */; };
 		395D840B2762604100DC98A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D840A2762604100DC98A4 /* SceneDelegate.swift */; };
 		395D840D2762604100DC98A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395D840C2762604100DC98A4 /* MainViewController.swift */; };
@@ -48,6 +50,8 @@
 		392CC22E2768A1E300A7696D /* RootTabbarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabbarCoordinator.swift; sourceTree = "<group>"; };
 		392CC2312768A37000A7696D /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
 		392CC2332768A38400A7696D /* OtherCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCoordinator.swift; sourceTree = "<group>"; };
+		392CC2362769930600A7696D /* OrderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		392CC238276994E700A7696D /* OrderDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailCoordinator.swift; sourceTree = "<group>"; };
 		395D84052762604100DC98A4 /* CoordinatorDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		395D84082762604100DC98A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		395D840A2762604100DC98A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		392CC235276992E200A7696D /* OtherDetail */ = {
+			isa = PBXGroup;
+			children = (
+				392CC2362769930600A7696D /* OrderDetailViewController.swift */,
+				392CC238276994E700A7696D /* OrderDetailCoordinator.swift */,
+			);
+			path = OtherDetail;
+			sourceTree = "<group>";
+		};
 		395D83FC2762604100DC98A4 = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +152,7 @@
 				39E2A15A2767A1D5001160D9 /* Navigation */,
 				39E2A1552767A15B001160D9 /* Coordinator */,
 				392CC2302768A35700A7696D /* Other */,
+				392CC235276992E200A7696D /* OtherDetail */,
 				395D84082762604100DC98A4 /* AppDelegate.swift */,
 				395D840A2762604100DC98A4 /* SceneDelegate.swift */,
 				395D840C2762604100DC98A4 /* MainViewController.swift */,
@@ -301,8 +315,10 @@
 				395D84092762604100DC98A4 /* AppDelegate.swift in Sources */,
 				39E2A1692767A5DE001160D9 /* BuyCoordinator.swift in Sources */,
 				392CC22F2768A1E300A7696D /* RootTabbarCoordinator.swift in Sources */,
+				392CC2372769930600A7696D /* OrderDetailViewController.swift in Sources */,
 				392CC2342768A38400A7696D /* OtherCoordinator.swift in Sources */,
 				39E2A1592767A1A4001160D9 /* BaseNavigationController.swift in Sources */,
+				392CC239276994E700A7696D /* OrderDetailCoordinator.swift in Sources */,
 				392CC2322768A37000A7696D /* OtherViewController.swift in Sources */,
 				39E2A15C2767A1FA001160D9 /* MainCoordinator.swift in Sources */,
 				39E2A1672767A545001160D9 /* BuyViewController.swift in Sources */,

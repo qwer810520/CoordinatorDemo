@@ -86,14 +86,12 @@ class BuyViewController: UIViewController {
     private func bindingView() {
         popButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] _ in
-                print("popButton did Pressed")
                 self?.delegate?.popToMainController()
             })
             .disposed(by: disposeBag)
         
         pushButton.rx.controlEvent(.touchUpInside)
             .subscribe(onNext: { [weak self] in
-                print("pushButton did Pressed")
                 guard let self = self else { return }
                 self.delegate?.toCheckOrderResult(with: "\(self.selectProductIndex + 1500)")
             })

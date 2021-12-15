@@ -9,10 +9,24 @@ import UIKit
 
 class OtherCoordinator: Coordinator<UINavigationController> {
     
+    private var viewController: UIViewController? = nil
+    
     override func start() {
         guard !isStart else { return }
-        let viewController = OtherViewController()
-        push(viewController: viewController, animated: false)
+        let controller = OtherViewController()
+        viewController = controller
+        controller.delegate = self
+        push(viewController: controller, animated: false)
         super.start()
+    }
+}
+
+    // MARK: - OtherViewControllerDelegate
+
+extension OtherCoordinator: OtherViewControllerDelegate {
+    func presentDetail() {
+        guard let controller = viewController else { return }
+        let detail = OrderDetailCoordinator(viewController: controller)
+        startChild(detail)
     }
 }

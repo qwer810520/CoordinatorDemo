@@ -36,11 +36,8 @@ extension BaseNavigationController: UINavigationControllerDelegate, UIGestureRec
         guard let previousViewController = navigationController.transitionCoordinator?.viewController(forKey: .from), !navigationController.viewControllers.contains(previousViewController) else {
             return
         }
-        print("previousViewController: \(previousViewController), status: \(!navigationController.viewControllers.contains(previousViewController))")
         
         viewController.coordinator?.stopChildren()
-        
-        print(#function, "viewController: \(viewController), coordinator: \(viewController.coordinator), child: \(viewController.coordinator?.childCoordinators)")
     }
 }
 
