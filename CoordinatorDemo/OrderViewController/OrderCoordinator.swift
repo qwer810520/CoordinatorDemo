@@ -20,7 +20,17 @@ class OrderCoordinator: Coordinator<UINavigationController> {
     
     override func start() {
         let viewController = OrderViewController(price: orderPrice)
+        viewController.delegate = self
         push(viewController: viewController, animated: true)
         super.start()
+    }
+}
+
+    // MARK: - OrderViewControllerDelegate
+
+extension OrderCoordinator: OrderViewControllerDelegate {
+    func popToRootController() {
+        guard let coordinator = coordinatorsAtNavigationController.last(where: { $0 is MainCoordinator }) else { return }
+        pop(to: coordinator)
     }
 }
